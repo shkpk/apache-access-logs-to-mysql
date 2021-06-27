@@ -12,6 +12,12 @@ sudo apt-get install docker-compose
 
 > Note: You can use docker and docker compose on any Operating system. Above mentioned installation commands are for Ubuntu.
 
+## Download code
+```
+git clone https://github.com/shkpk/apache-access-logs-to-mysql.git
+cd apache-access-logs-to-mysql/
+```
+
 ## Creating custom container with Apache
 Run following command to create Apache container image
 ```
