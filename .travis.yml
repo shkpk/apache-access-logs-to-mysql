@@ -1,0 +1,17 @@
+language: bash
+
+sudo: required
+services:
+  - docker
+
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install docker.io
+ - sudo apt-get install docker-compose
+
+script:
+ - sudo docker build -t ubu_apache .
+ - sudo docker-compose up -d
+ - sleep 60
+ - curl -sL -w "%{http_code}\\n" "http://localhost/" -o /dev/null | grep "200" &> /dev/null
+ - sudo docker exec -it mysqldb mysql -u root -p'changeme' -e "select * from apachelogs.web_access_log;"
