@@ -24,5 +24,7 @@ services:
             - ./html:/var/www/html
         container_name: apache
         image: ubu_apache
+        depends_on:
+            - mysql
         ports:
             - "80:80"
